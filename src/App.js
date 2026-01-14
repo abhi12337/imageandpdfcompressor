@@ -34,22 +34,38 @@ function App() {
   return (
     <div className="min-h-screen">
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex flex-col gap-3">
+            <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent text-center md:text-left">
               🗜️ PDF Tools
             </h1>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="ghost" onClick={() => { setCategory('organize'); setActiveTab('all'); }}>
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 justify-center md:justify-start">
+              <Button 
+                className="text-xs sm:text-sm" 
+                variant={activeTab === 'all' && category === 'organize' ? 'default' : 'ghost'} 
+                onClick={() => { setCategory('organize'); setActiveTab('all'); }}
+              >
                 ORGANIZE PDF
               </Button>
-              <Button variant="ghost" onClick={() => { setCategory('optimize'); setActiveTab('all'); }}>
+              <Button 
+                className="text-xs sm:text-sm" 
+                variant={activeTab === 'all' && category === 'optimize' ? 'default' : 'ghost'} 
+                onClick={() => { setCategory('optimize'); setActiveTab('all'); }}
+              >
                 OPTIMIZE PDF
               </Button>
-              <Button variant="ghost" onClick={() => { setCategory('convert'); setActiveTab('all'); }}>
+              <Button 
+                className="text-xs sm:text-sm" 
+                variant={activeTab === 'all' && category === 'convert' ? 'default' : 'ghost'} 
+                onClick={() => { setCategory('convert'); setActiveTab('all'); }}
+              >
                 CONVERT PDF
               </Button>
-              <Button onClick={() => { setCategory('all'); setActiveTab('all'); }}>
+              <Button 
+                className="text-xs sm:text-sm" 
+                variant={activeTab === 'all' && category === 'all' ? 'default' : 'ghost'} 
+                onClick={() => { setCategory('all'); setActiveTab('all'); }}
+              >
                 ALL PDF TOOLS
               </Button>
             </div>
@@ -73,7 +89,7 @@ function App() {
             {categories.map(cat => (
               <Button
                 key={cat.id}
-                variant={category === cat.id ? "default" : "outline"}
+                variant="outline"
                 onClick={() => setCategory(cat.id)}
               >
                 {cat.name}
